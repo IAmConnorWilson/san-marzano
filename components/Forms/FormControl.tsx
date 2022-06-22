@@ -96,7 +96,7 @@ type CompleteFormControlProps = FormControlUserProps &
   StyledComponentPropsWithRef<"div"> &
   StyledComponentPropsWithRef<"input">;
 
-type LabelProps = { isInvalid?: boolean };
+type LabelProps = { isInvalid?: boolean; children: any };
 
 const Label: FC<LabelProps> = ({ isInvalid, ...rest }: LabelProps) => (
   <Text
