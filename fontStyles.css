@@ -1,0 +1,41 @@
+/**
+ * This file is only for adding fonts
+*/
+/* merriweather-regular - latin */
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("./public/fonts/merriweather-v25-latin/merriweather-v25-latin-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./public/fonts/merriweather-v25-latin/merriweather-v25-latin-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* hina-mincho-regular - latin */
+@font-face {
+  font-family: "Hina Mincho";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("./public/fonts/hina-mincho-v2-latin/hina-mincho-v2-latin-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./public/fonts/hina-mincho-v2-latin/hina-mincho-v2-latin-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* inconsolata-regular - latin */
+@font-face {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("./public/fonts/inconsolata-v21-latin/inconsolata-v21-latin-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./public/fonts/inconsolata-v21-latin/inconsolata-v21-latin-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
