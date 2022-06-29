@@ -6,7 +6,6 @@ import GlobalStyles from "../utils/GlobalStyles";
 import SanMarzanoTheme from "../utils/theme";
 import { useStore } from "../store";
 
-import "../fontStyles.css";
 import { useApollo } from "../utils/apolloClient";
 import Sidebar from "../components/Sidebar";
 

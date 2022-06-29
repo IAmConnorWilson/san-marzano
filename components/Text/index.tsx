@@ -40,79 +40,36 @@ const TextBase = styled("div")<TextBaseProps>(
     border,
     flexbox,
     variant({
-      prop: "spacing",
-      variants: {
-        // TODO put these into the theme
-        tight: {
-          letterSpacing: "-0.05em",
-        },
-        normal: {
-          letterSpacing: 0,
-        },
-        loose: {
-          letterSpacing: "0.05em",
-        },
-      },
-    }),
-    variant({
-      prop: "weight",
-      variants: {
-        thin: {
-          fontWeight: 0,
-        },
-        normal: {
-          fontWeight: 1,
-        },
-        heavy: {
-          fontWeight: 2,
-        },
-      },
-    }),
-    variant({
       prop: "family",
       variants: {
-        heading: {
-          fontFamily: "DM Serif Display",
+        garamond: {
+          fontFamily: "'EB Garamond', serif",
         },
-        body: {
-          fontFamily: "Source Sans Pro",
+        garamondBold: {
+          fontFamily: "'EB Garamond', serif",
+          fontWeight: 700,
         },
-      },
-    }),
-    variant({
-      prop: "variant",
-      variants: {
-        golden: {
-          fontFamily: "DM Serif Display",
-          background: SanMarzanoTheme.gradients.golden,
-          "-webkit-background-clip": "text",
-          "-webkit-text-fill-color": "transparent",
+        josefin: {
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontWeight: 300,
+        },
+        josefinBold: {
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontWeight: 400,
         },
       },
     })
   )
 );
 
-const TextSpacing = Enum("tight", "normal", "loose");
-type TextSpacing = Enum<typeof TextSpacing>;
-
-const TextWeight = Enum("thin", "normal", "heavy");
-type TextWeight = Enum<typeof TextWeight>;
-
-const Family = Enum("heading", "body");
+const Family = Enum("garamond", "garamondBold", "josefin", "josefin");
 type Family = Enum<typeof Family>;
-
-const Variant = Enum("golden");
-type Variant = Enum<typeof Variant>;
 
 type TextAsType = keyof JSX.IntrinsicElements | React.ComponentType<any>;
 
 interface TextCustomProps {
   size?: number;
-  weight?: TextWeight;
-  spacing?: TextSpacing;
   family?: Family;
-  variant?: Variant;
   as?: TextAsType;
 }
 
@@ -125,7 +82,7 @@ export const Text: FC<TextProps> = ({
   color: textColor,
   size = 16,
   lineHeight: userLineHeight,
-  family = "body",
+  family = "josefin",
   ...props
 }: TextProps) => {
   // Helpers

@@ -87,6 +87,9 @@ export interface SanMarzanoThemeType {
     orange700: string;
     orange800: string;
     orange900: string;
+    cream: string;
+    olive: string;
+    auburn: string;
   };
 }
 
@@ -189,6 +192,10 @@ export const SanMarzanoTheme: SanMarzanoThemeType = {
     orange700: "#C05621",
     orange800: "#9C4221",
     orange900: "#7B341E",
+    // San marzano colors
+    cream: "#F6F1EC",
+    olive: "#484830",
+    auburn: "#8C4D22",
   },
 };
 

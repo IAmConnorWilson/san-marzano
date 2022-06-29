@@ -18,7 +18,7 @@ import {
   ColorProps,
 } from "styled-system";
 import styled from "styled-components";
-import { SanMarzanoThemeType } from "../../utils/theme";
+import SanMarzanoTheme, { SanMarzanoThemeType } from "../../utils/theme";
 import { Enum } from "../../utils/enum";
 
 // utils
@@ -40,23 +40,20 @@ const DisabledStyles = {
 
 const ButtonBase = styled.button<ButtonBaseProps>(
   {
-    display: "flex",
-    alignItems: "center",
-    fontFamily: "Inter",
-    cursor: "pointer",
+    fontFamily: "'EB Garamond', serif",
     border: "none",
+    cursor: "pointer",
     fontWeight: 500,
     textDecoration: "none",
     lineHeight: "24px",
-    padding: "2px 4px",
-    borderStyle: "solid",
-    borderWidth: "4px",
-    borderLeftColor: "rgba(255, 255, 255, 0.2)",
-    borderRightColor: "rgba(0, 0, 0, 0.15)",
-    borderBottomColor: "rgba(0, 0, 0, 0.5)",
-    borderTopColor: "rgba(255, 255, 255, 0.33)",
+    padding: "8px 12px",
     // stopping blue flicker on tap in mobile
     "-webkit-tap-highlight-color": "transparent",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "4px",
+    boxSizing: "border-box",
   },
   compose(color, typography, space, border, layout, flexbox),
   {
@@ -67,48 +64,28 @@ const ButtonBase = styled.button<ButtonBaseProps>(
       prop: "variant",
       variants: {
         primary: {
-          outline: "none",
-          fontFamily: "Source Sans Pro",
-          fontSize: " 1em",
-          boxSizing: "border-box",
-          borderRadius: ".3em",
-          height: " 2.75em",
-          lineHeight: "2.5em",
-          textTransform: "uppercase",
-          padding: "0 1em",
-          boxShadow:
-            "0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4), inset 0 -2px 5px 1px rgba(139,66,8,1),inset 0 -1px 1px 3px rgba(250,227,133,1)",
-          backgroundImage:
-            "linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07)",
-          border: "1px solid #a55d07",
-          color: "rgb(120,50,5)",
-          textShadow: "0 2px 2px rgba(250, 227, 133, 1)",
-          cursor: "pointer",
-          transition: "all .2s ease-in-out",
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center",
+          bg: SanMarzanoTheme.colors.olive,
+          color: SanMarzanoTheme.colors.cream,
           "@media(hover: hover) and (pointer: fine)": {
             "&:hover": {
-              backgroundSize: "150% 150%",
-              boxShadow:
-                "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250,227,133,1)",
-              border: "1px solid rgba(165,93,7,.6)",
-              color: "rgba(120,50,5,.8)",
+              bg: "rgba(72, 72, 48, 0.6)",
             },
             "&:focus": {
-              backgroundSize: "150% 150%",
-              boxShadow:
-                "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250,227,133,1)",
-              border: "1px solid rgba(165,93,7,.6)",
-              color: "rgba(120,50,5,.8)",
+              bg: "rgba(72, 72, 48, 0.6)",
             },
           },
-          "&:hover": {
-            backgroundSize: "150% 150%",
-            boxShadow:
-              "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250,227,133,1)",
-            border: "1px solid rgba(165,93,7,.6)",
-            color: "rgba(120,50,5,.8)",
+        },
+        secondary: {
+          border: `2px solid ${SanMarzanoTheme.colors.olive}`,
+          bg: SanMarzanoTheme.colors.cream,
+          color: SanMarzanoTheme.colors.olive,
+          "@media(hover: hover) and (pointer: fine)": {
+            "&:hover": {
+              bg: "rgba(72, 72, 48, 0.1);",
+            },
+            "&:focus": {
+              bg: "rgba(72, 72, 48, 0.1)",
+            },
           },
         },
       },
@@ -129,18 +106,14 @@ const ButtonBase = styled.button<ButtonBaseProps>(
   )
 );
 
-const ButtonVariant = Enum("primary");
+const ButtonVariant = Enum("primary", "secondary");
 
 type ButtonVariant = Enum<typeof ButtonVariant>;
-
-const ButtonSize = Enum("small", "dense");
-type ButtonSize = Enum<typeof ButtonSize>;
 
 type ButtonAsType = keyof JSX.IntrinsicElements | React.ComponentType<any>;
 
 interface ButtonProps {
   variant?: ButtonVariant;
-  size?: ButtonSize;
   onClick?: (event?: MouseEvent<HTMLButtonElement>) => void;
   isDisabled?: boolean;
   as?: ButtonAsType;
@@ -158,7 +131,7 @@ export type CompleteButtonType = ButtonProps &
 
 export const Button: FC<CompleteButtonType> = ({
   isDisabled = false,
-  fontSize = 14,
+  fontSize = 16,
   variant = "primary",
   ...props
 }: CompleteButtonType) => {

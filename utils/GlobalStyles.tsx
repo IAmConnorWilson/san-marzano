@@ -13,7 +13,8 @@ const GlobalStyles = createGlobalStyle`
       padding: 0px;
       overflow: scroll;
       -webkit-overflow-scrolling: touch;
-      font-family: Merriweather;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
       background-color: ${SanMarzanoTheme.colors.white};
     }
     
@@ -73,7 +74,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     div {
-      font-family: Merriweather;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
     }
 
     a {

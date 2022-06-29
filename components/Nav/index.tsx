@@ -1,24 +1,80 @@
 import styled from "styled-components";
-import { IoMdMenu } from "react-icons/io";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import Image from "next/image";
+import Logo from "../../public/LogoBlack.png";
+import Link from "next/link";
+import Text from "../Text";
+import { useRouter } from "next/router";
 import Button from "../Button";
-import { GlobalActionType } from "../../store/global.module";
+import Box from "../Box";
 
 const Nav = () => {
-  const dispatch = useAppDispatch();
-
-  const openSidebar = () => {
-    dispatch({
-      type: GlobalActionType.SET_SIDEBAR_STATE,
-      data: { isSidebarOpen: true },
-    });
-  };
+  const router = useRouter();
+  const path = router.pathname;
 
   return (
     <NavWrapper>
-      <Button variant="primary" onClick={openSidebar}>
-        <IoMdMenu size="24" />
-      </Button>
+      <LogoContainer>
+        <Image src={Logo} alt="San Marzano Logo" objectFit="contain" />
+      </LogoContainer>
+      <Box />
+      <MenuItems>
+        <Link href="/">
+          <MenuItem>
+            <Text
+              size={18}
+              family={path === "/" ? "garamondBold" : "garamond"}
+              textAlign="center"
+            >
+              Home
+            </Text>
+          </MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem>
+            <Text
+              textAlign="center"
+              size={18}
+              family={path === "/menu" ? "garamondBold" : "garamond"}
+            >
+              Menus
+            </Text>
+          </MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem>
+            <Text
+              textAlign="center"
+              size={18}
+              family={path === "/about" ? "garamondBold" : "garamond"}
+            >
+              About
+            </Text>
+          </MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem>
+            <Text
+              textAlign="center"
+              size={18}
+              family={path === "/faq" ? "garamondBold" : "garamond"}
+            >
+              FAQ
+            </Text>
+          </MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem>
+            <Text
+              textAlign="center"
+              size={18}
+              family={path === "/contact" ? "garamondBold" : "garamond"}
+            >
+              Contact
+            </Text>
+          </MenuItem>
+        </Link>
+        <Button>Reserve</Button>
+      </MenuItems>
     </NavWrapper>
   );
 };
@@ -27,12 +83,30 @@ export default Nav;
 
 const NavWrapper = styled.div`
   display: grid;
-  grid-template-columns: max-content 1fr max-content;
-  padding: 24px;
+  grid-template-columns: 300px 1fr max-content;
+  padding: 16px;
 `;
 
 const LogoContainer = styled.div`
+  min-height: 90px;
+`;
+
+const MenuItems = styled.div`
+  display: grid;
+  justify-content: flex-end;
+  align-items: center;
+  grid-gap: 16px;
+  ${({ theme }) => theme.mediaQueries.tablet} {
+    grid-gap: 20px;
+  }
+  ${({ theme }) => theme.mediaQueries.desktop} {
+    grid-gap: 32px;
+  }
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+`;
+
+const MenuItem = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
