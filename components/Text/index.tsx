@@ -62,7 +62,7 @@ const TextBase = styled("div")<TextBaseProps>(
   )
 );
 
-const Family = Enum("garamond", "garamondBold", "josefin", "josefin");
+const Family = Enum("garamond", "garamondBold", "josefin", "josefinBold");
 type Family = Enum<typeof Family>;
 
 type TextAsType = keyof JSX.IntrinsicElements | React.ComponentType<any>;

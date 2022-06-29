@@ -12,74 +12,84 @@ const Nav = () => {
   const path = router.pathname;
 
   return (
-    <NavWrapper>
-      <LogoContainer>
-        <Image src={Logo} alt="San Marzano Logo" objectFit="contain" />
-      </LogoContainer>
-      <Box />
-      <MenuItems>
-        <Link href="/">
-          <MenuItem>
-            <Text
-              size={18}
-              family={path === "/" ? "garamondBold" : "garamond"}
-              textAlign="center"
-            >
-              Home
-            </Text>
-          </MenuItem>
-        </Link>
-        <Link href="/">
-          <MenuItem>
-            <Text
-              textAlign="center"
-              size={18}
-              family={path === "/menu" ? "garamondBold" : "garamond"}
-            >
-              Menus
-            </Text>
-          </MenuItem>
-        </Link>
-        <Link href="/">
-          <MenuItem>
-            <Text
-              textAlign="center"
-              size={18}
-              family={path === "/about" ? "garamondBold" : "garamond"}
-            >
-              About
-            </Text>
-          </MenuItem>
-        </Link>
-        <Link href="/">
-          <MenuItem>
-            <Text
-              textAlign="center"
-              size={18}
-              family={path === "/faq" ? "garamondBold" : "garamond"}
-            >
-              FAQ
-            </Text>
-          </MenuItem>
-        </Link>
-        <Link href="/">
-          <MenuItem>
-            <Text
-              textAlign="center"
-              size={18}
-              family={path === "/contact" ? "garamondBold" : "garamond"}
-            >
-              Contact
-            </Text>
-          </MenuItem>
-        </Link>
-        <Button>Reserve</Button>
-      </MenuItems>
-    </NavWrapper>
+    <NavContainer>
+      <ContentWrapper>
+        <NavWrapper>
+          <LogoContainer>
+            <Image src={Logo} alt="San Marzano Logo" objectFit="contain" />
+          </LogoContainer>
+          <Box />
+          <MenuItems>
+            <Link href="/">
+              <MenuItem>
+                <Text
+                  size={18}
+                  family={path === "/" ? "garamondBold" : "garamond"}
+                  textAlign="center"
+                >
+                  Home
+                </Text>
+              </MenuItem>
+            </Link>
+            <Link href="/">
+              <MenuItem>
+                <Text
+                  textAlign="center"
+                  size={18}
+                  family={path === "/menu" ? "garamondBold" : "garamond"}
+                >
+                  Menus
+                </Text>
+              </MenuItem>
+            </Link>
+            <Link href="/">
+              <MenuItem>
+                <Text
+                  textAlign="center"
+                  size={18}
+                  family={path === "/about" ? "garamondBold" : "garamond"}
+                >
+                  About
+                </Text>
+              </MenuItem>
+            </Link>
+            <Link href="/">
+              <MenuItem>
+                <Text
+                  textAlign="center"
+                  size={18}
+                  family={path === "/faq" ? "garamondBold" : "garamond"}
+                >
+                  FAQ
+                </Text>
+              </MenuItem>
+            </Link>
+            <Link href="/">
+              <MenuItem>
+                <Text
+                  textAlign="center"
+                  size={18}
+                  family={path === "/contact" ? "garamondBold" : "garamond"}
+                >
+                  Contact
+                </Text>
+              </MenuItem>
+            </Link>
+            <Button>Reserve</Button>
+          </MenuItems>
+        </NavWrapper>
+      </ContentWrapper>
+    </NavContainer>
   );
 };
 
 export default Nav;
+
+const NavContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
 
 const NavWrapper = styled.div`
   display: grid;
@@ -109,4 +119,10 @@ const MenuItem = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: center;
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 32px;
 `;
